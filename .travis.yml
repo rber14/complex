@@ -1,0 +1,29 @@
+sudo: required
+services: 
+  - docker
+
+before_install:
+  - docker build -t rcamposs/react-test -f ./client/Dockerfile.dev ./client
+
+
+script:
+  - docker run rcamposs/react-test npm test -- --coverage
+
+after_success:
+  - docker build -t rcamposs/multi-client ./client
+  - docker build -t rcamposs/multi-nginx ./nginx
+  - docker build -t rcamposs/multi-server ./server
+  - docker build -t rcamposs/multi-worker ./worker
+  # login
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # push to docker hub
+  - docker push rcamposs/multi-client 
+  - docker push rcamposs/multi-nginx 
+  - docker push rcamposs/multi-server 
+  - docker push rcamposs/multi-worker 
+
+
+
+
+
+
