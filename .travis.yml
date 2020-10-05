@@ -21,6 +21,7 @@ after_success:
   - docker push rcamposs/multi-nginx 
   - docker push rcamposs/multi-server 
   - docker push rcamposs/multi-worker 
+  
 
 
 
