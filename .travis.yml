@@ -8,7 +8,7 @@ before_install:
 
 
 script:
-  - docker run -e CI=true USERNAME/react-test npm test
+  - docker run -e CI=true rcamposs/react-test npm test
 
 after_success:
   - docker build -t rcamposs/multi-client ./client
