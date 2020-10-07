@@ -1,5 +1,6 @@
 sudo: required
 language: generic 
+
 services: 
   - docker
 
@@ -8,7 +9,7 @@ before_install:
 
 
 script:
-  - docker run -e CI=true rcamposs/react-test npm test
+  - docker run rcamposs/react-test npm test -- --coverage
 
 after_success:
   - docker build -t rcamposs/multi-client ./client
@@ -27,8 +28,8 @@ deploy:
   edge: true
   provider: elasticbeanstalk
   region: us-west-1
-  app: multi-docker
-  env: MultiDocker-env
+  app: multi-complex-docker
+  env: MultiComplexDocker-env
   bucket_name: elasticbeanstalk-us-west-1-431380101178
   bucket_path: docker-multi
   on:
