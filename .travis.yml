@@ -28,8 +28,8 @@ deploy:
   edge: true
   provider: elasticbeanstalk
   region: us-west-1
-  app: multi-complex-docker
-  env: MultiComplexDocker-env
+  app: docker-multi
+  env: DockerMulti-env
   bucket_name: elasticbeanstalk-us-west-1-431380101178
   bucket_path: docker-multi
   on:
