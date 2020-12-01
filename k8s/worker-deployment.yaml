@@ -19,5 +19,5 @@ spec:
             - name: REDIS_HOST
               value: redis-cluster-ip-service # use the service name  from redis-cluster-ip yaml
             - name: REDIS_PORT
-              value: 6379
-              
+              value: '6379'
+
