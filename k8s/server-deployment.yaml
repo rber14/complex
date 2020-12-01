@@ -16,4 +16,17 @@ spec:
         - name: server
           image: rcamposs/multi-server
           ports:
-            - containerPort: 5000 # port 5000 accesssible in this apace
+            - containerPort: 5000
+          env: 
+            - name: REDIS_HOST
+              value: redis-cluster-ip-service
+            - name: REDIS_PORT
+              value: 6379
+            - name: PGUSER
+              value: postgres
+            - name: PGHOST # how to reach postgres instance
+              value: postgres-cluster-ip-service
+            - name: PGPORT
+              value: 5432
+            - name: PGDATABASE
+              value: postgres
