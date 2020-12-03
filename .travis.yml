@@ -6,5 +6,5 @@ before_install:
   - curl https://sdk.cloud.google.com | bash > /dev/null; # downloads and installs locally in instance assigned by travis
   - source $HOME/google-cloud-sdk/path.bash.inc 
   - gcloud compnents update kubectl # download install kubctl
-  - gcloud auth activate-service-account --key-file service-account.json # authorize gc sdk with service account
+  - gcloud auth activate-service-account --key-file service-account.json # authorize gc sdk with service account. File is above in the first line
 
