@@ -7,4 +7,7 @@ before_install:
   - source $HOME/google-cloud-sdk/path.bash.inc 
   - gcloud compnents update kubectl # download install kubctl
   - gcloud auth activate-service-account --key-file service-account.json # authorize gc sdk with service account. File is above in the first line
-
+  - gcloud config set project complex-k8s-297420 # tell gcloud which project to work on 
+  - gcloud config set compute/zone us-central1-a	# specify compute zone
+  - gcloud container clusters get-credentials complex-cluster # what cluster need to be working with when we issue kube commands
+  
