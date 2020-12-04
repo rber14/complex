@@ -23,7 +23,7 @@ script:
 
 deploy:
   provider: script 
-  script: bash ./delpoy.sh # custom script file
+  script: bash ./deploy.sh # custom script file
   on:
     branch: master # only if we are working on the master branch
 
