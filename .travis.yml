@@ -13,7 +13,7 @@ before_install:
   - gcloud auth activate-service-account --key-file service-account.json # authorize gc sdk with service account. File is above in the first line
   - gcloud config set project complex-k8s-297420 # tell gcloud which project to work on 
   - gcloud config set compute/zone us-central1-a	# specify compute zone
-  - gcloud container clusters get-credentials complex-k8s # what cluster need to be working with when we issue kube commands
+  - gcloud container clusters get-credentials complex-cluster	 # what cluster need to be working with when we issue kube commands
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin # pw and usern is set up in travis settings as env 
   - docker build -t rcamposs/react-test -f ./client/Dockerfile.dev ./client
 
