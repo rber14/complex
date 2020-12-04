@@ -9,7 +9,7 @@ before_install:
   - openssl aes-256-cbc -K $encrypted_9f3b5599b056_key -iv $encrypted_9f3b5599b056_iv -in service-account.json.enc -out service-account.json -d
   - curl https://sdk.cloud.google.com | bash > /dev/null; # downloads and installs locally in instance assigned by travis
   - source $HOME/google-cloud-sdk/path.bash.inc 
-  - gcloud compnents update kubectl # download install kubctl
+  - gcloud components update kubectl # download install kubctl
   - gcloud auth activate-service-account --key-file service-account.json # authorize gc sdk with service account. File is above in the first line
   - gcloud config set project complex-k8s-297420 # tell gcloud which project to work on 
   - gcloud config set compute/zone us-central1-a	# specify compute zone
