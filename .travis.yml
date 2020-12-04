@@ -21,9 +21,9 @@ before_install:
 script:
   - docker run rcamposs/react-test npm test -- --coverage # adding -- -- coverage prints out cov report and signals to travis if ran successful
 
-  depoly:
-    provider: script 
-    script: bash ./delpoy.sh # custom script file
-    on:
-      branch: master # only if we are working on the master branch
+depoly:
+  provider: script 
+  script: bash ./delpoy.sh # custom script file
+  on:
+    branch: master # only if we are working on the master branch
 
