@@ -1,6 +1,10 @@
 sudo: required
 services:
-  - docker
+  - docker # gives us access to docker
+env:
+  global:
+    - SHA=$(git rev-parse HEAD) # gives is SHA to track deployments
+    - CLOUDSDK_CORE_DISABLE_PROMPTS=1 # so it doesn't displays prompts 
 before_install:
   - openssl aes-256-cbc -K $encrypted_9f3b5599b056_key -iv $encrypted_9f3b5599b056_iv -in service-account.json.enc -out service-account.json -d
   - curl https://sdk.cloud.google.com | bash > /dev/null; # downloads and installs locally in instance assigned by travis
@@ -10,4 +14,16 @@ before_install:
   - gcloud config set project complex-k8s-297420 # tell gcloud which project to work on 
   - gcloud config set compute/zone us-central1-a	# specify compute zone
   - gcloud container clusters get-credentials complex-cluster # what cluster need to be working with when we issue kube commands
-  
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin # pw and usern is set up in travis settings as env 
+  - docker build -t rcamposs/react-test -f ./client/Dockerfile.dev ./client
+
+
+script:
+  - docker run rcamposs/react-test npm test -- --coverage # adding -- -- coverage prints out cov report and signals to travis if ran successful
+
+  depoly:
+    provider: script 
+    script: bash ./delpoy.sh # custom script file
+    on:
+      branch: master # only if we are working on the master branch
+
