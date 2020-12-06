@@ -9,7 +9,7 @@ docker push rcamposs/multi-worker:latest
 
 docker push rcamposs/multi-client:$SHA
 docker push rcamposs/multi-server:$SHA
-docker push rcamposs/mulit-worker:$SHA
+docker push rcamposs/multi-worker:$SHA
 
 kubectl apply -f k8s
 
