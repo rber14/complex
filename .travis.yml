@@ -22,7 +22,7 @@ script:
   - docker run rcamposs/react-test npm test -- --coverage # adding -- -- coverage prints out cov report and signals to travis if ran successful
 
 deploy:
-  provider: script 
+  provider: script # 
   script: bash ./deploy.sh # custom script file
   on:
     branch: master # only if we are working on the master branch
