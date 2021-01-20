@@ -8,13 +8,14 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /$1
     certmanager.k8s.io/cluster-issuer: 'letsencrypt-prod'
     nginx.ingress.kubernetes.io/ssl-redirect: 'true'
+    nginx.ingress.kubernetes.io/secure-backends: "true"
 spec:
-  tls: 
+  tls: # specify host for which we want to aquire certs
     - hosts: 
         - robertocampos.site
         - www.robertocampos.site
-      secretName: k8-multi-com
-  rules:
+      secretName: k8-multi-com #  secret will contain the TLS private key and issued certificat
+  rules: 
     - host: robertocampos.site
       http:
         paths: # there are two paths
