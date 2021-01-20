@@ -1,21 +1,21 @@
-# apiVersion: certmanager.k8.io/v1alpha1
-# kind: Certificate
-# metadata:
-#   name: k8-multi-com-tls
-# spec:
-#   secretName: k8-multi-com
-#   issuerRef: 
-#     name: letsencrypt-prod
-#     kind: ClusterIssuer
-#   commonName: robertocampos.site # domain name
-#   dnsNames:  # list all diff domains assoc. with cert
-#     - robertocampos.site
-#     - www.robertocampos.site
-#   acme: 
-#     config:
-#       - http01:
-#           ingressClass: nginx
-#         domains: # diff domains verif process going to attempt to access
-#           - robertocampos.site
-#           - www.robertocampos.site
+apiVersion: certmanager.k8.io/v1alpha1
+kind: Certificate
+metadata:
+  name: k8-multi-com-tls
+spec:
+  secretName: k8-multi-com
+  issuerRef: 
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: robertocampos.site # domain name
+  dnsNames:  # list all diff domains assoc. with cert
+    - robertocampos.site
+    - www.robertocampos.site
+  acme: 
+    config:
+      - http01:
+          ingressClass: nginx
+        domains: # diff domains verif process going to attempt to access
+          - robertocampos.site
+          - www.robertocampos.site
         
