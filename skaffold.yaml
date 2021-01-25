@@ -1,0 +1,22 @@
+# to make live updates
+
+# apiVersion: skaffold/v1beta2
+# kind: Config
+# build:
+#   local:
+#     push: false 
+#   artifacts:
+#     - image: rcamposs/multi-client
+#       context: client
+#       docker:
+#         dockerfile: ./client/Dockerfile.dev
+#       sync:
+#         '**/*.js': . # anytime js file change, look at it an use it in the container
+#         '**/*.css': .
+#         '**/*.html': .
+# deploy:
+#   kubectl:
+#     manifest:
+#       - k8s/client-deployment.yaml
+
+
